@@ -7,12 +7,20 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
 public class IntegrateAPIwithFCTG {
-	@Test
+	public static Response res;
+	@Test(priority = 1)
 	public void verifyGetMethod()
 	{
-	Response res=given().contentType(ContentType.JSON).when().get("https://reqres.in/api/users?page=2");
+	res=given().contentType(ContentType.JSON).when().get("https://reqres.in/api/users/2");
 	System.out.println(res.statusCode());
-	System.out.println(res.asString());
+	
 	}
+	@Test(priority = 2 )
+	public void verifyResBody()
+	{
+	System.out.println(res.asString());;
+	
+	}
+	
 
 }
